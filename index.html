@@ -44,6 +44,7 @@
         <p>请选择年级开始练习</p>
         <button class="btn btn-blue" onclick="loadGrade8()">📘 八年级单词</button>
         <button class="btn btn-blue" onclick="loadGrade9()">📙 九年级单词</button>
+        <button class="btn btn-blue" onclick="loadGrade10()">📗 收集的单词</button>
 
         <div id="quiz-setting" class="hidden">
             <p style="margin-top: 20px;">请选择题型、抽题方式与本轮背诵数量：</p>
@@ -1660,6 +1661,21 @@
         { word: "wing", pos: "n.", meaning: "翅膀；机翼" },
     ];
 
+    const grade10Words = [
+        { word: "at present", pos: "n.", meaning: "现在" },
+        { word: "in order", pos: "n.", meaning: "按顺序" },
+        { word: "at work", pos: "n.", meaning: "在工作" },
+        { word: "in person", pos: "n.", meaning: "亲自" },
+        { word: "put away", pos: "n.", meaning: "把......放原处" },
+        { word: "hear of", pos: "n.", meaning: "听说" },
+        { word: "work out", pos: "v.", meaning: "想出" },
+        { word: "look for", pos: "n.", meaning: "寻找" },
+        { word: "spread", pos: "v.", meaning: "传播" },
+        { word: "reflect", pos: "v.", meaning: "反射" },
+        { word: "increase", pos: "v.", meaning: "增加" },
+        { word: "bring", pos: "v.", meaning: "带来" },
+    ];
+
     // 全局变量
     let fullWordList = [];
     let currentQuizList = [];
@@ -1682,6 +1698,13 @@
 
     function loadGrade9() {
         fullWordList = grade9Words.map(w => ({ ...w, errors: 0 }));
+        document.getElementById('quiz-setting').classList.remove('hidden');
+        setQuizMode('en2zh');
+        setSelectionMode('random');
+    }
+
+    function loadGrade10() {
+        fullWordList = grade10Words.map(w => ({ ...w, errors: 0 }));
         document.getElementById('quiz-setting').classList.remove('hidden');
         setQuizMode('en2zh');
         setSelectionMode('random');
