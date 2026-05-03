@@ -1772,7 +1772,7 @@
             const btn = document.createElement('button');
             btn.className = 'option-btn';
             btn.innerText = quizMode === 'en2zh' ? opt.meaning : opt.word;
-            btn.disabled = answered;
+            //btn.disabled = answered;
             btn.onclick = () => checkAnswer(opt, w, btn);
             if (answered) {
                 if (opt.word === w.word) btn.classList.add('correct');
@@ -1808,7 +1808,7 @@
             const target = fullWordList.find(x => x.word === correct.word);
             if (target) target.errors++;
         }
-        all.forEach(b => b.disabled = true);
+        //all.forEach(b => b.disabled = true);
         updateNavButtons();
     }
 
