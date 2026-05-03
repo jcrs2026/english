@@ -2755,7 +2755,7 @@
             correctAnswers++;
         } else {
             btn.classList.add('wrong');
-            document.getElementById('feedback').innerText = `错误！正确：${quizMode === 'en2zh' ? correct.meaning : correct.word}`;
+            document.getElementById('feedback').innerText = `回答错误！ 正确答案：${quizMode === 'en2zh' ? correct.meaning : correct.word}`;
             document.getElementById('feedback').style.color = '#e74c3c';
             wrongAnswers++;
             const ansText = quizMode === 'en2zh' ? correct.meaning : correct.word;
