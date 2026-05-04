@@ -170,13 +170,24 @@
                 <button class="btn" onclick="startQuiz(30)">30 题</button>
                 <button class="btn" onclick="startQuiz(50)">50 题</button>
             </div>
+            
+            <!-- 新增：回到主页按钮（保持蓝色风格） -->
+            <div style="margin-top: 30px;">
+                <button class="btn" onclick="window.location.href='index.html'">
+                    🏠 回到主页
+                </button>
+            </div>
         </div>
     </div>
 
     <!-- 2. 答题界面（默认隐藏） -->
     <div class="container hidden" id="quiz-screen">
-        <!-- 已删除固定的 tri-img 和 desc -->
+        <!-- 新增：进度显示 -->
+        <div style="font-size: 18px; color: #909399; margin-bottom: 10px;">
+            进度：<span id="progress-text">1/15</span>
+        </div>
 
+        <!-- 已删除固定的 tri-img 和 desc -->
         <div class="question" id="question"></div>
         
         <!-- 选项区域 -->
@@ -384,6 +395,10 @@
         // 渲染题目
         function renderQ() {
             nowQ = currentList[currentIndex];
+
+            // 【新增】更新进度显示 (当前索引+1 / 总题数)
+            document.getElementById("progress-text").innerText = `${currentIndex + 1}/${currentList.length}`;
+
             const questionEl = document.getElementById("question");
             
             // 支持 HTML 内容（图片/公式）
