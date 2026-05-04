@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数理化基本 - 三角函数专项练习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "微软雅黑", sans-serif;
+        }
+        body {
+            padding: 30px;
+            background-color: #f5f7fa;
+            text-align: center;
+        }
+        .container {
+            max-width: 550px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px #ccc;
+        }
+
+        /* 开始界面 */
+        .start-screen {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .start-screen h1 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .quiz-setting {
+            margin-top: 20px;
+        }
+        .quiz-setting p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: 2px solid #409eff;
+            background: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 6px;
+        }
+        .btn.active {
+            background: #409eff;
+            color: #fff;
+        }
+        .hidden {
+            display: none !important;
+        }
+
+        /* 三角形图片 */
+        .tri-img {
+            width: 260px;
+            margin: 10px auto;
+        }
+        .desc {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .question {
+            font-size: 28px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .opt-btn {
+            padding: 15px;
+            font-size: 22px;
+            border: 2px solid #409eff;
+            background: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .opt-btn:hover {
+            background: #409eff;
+            color: #fff;
+        }
+        .opt-btn.right {
+            background: #67c23a;
+            color: #fff;
+            border-color: #67c23a;
+        }
+        .opt-btn.wrong {
+            background: #f56c6c;
+            color: #fff;
+            border-color: #f56c6c;
+        }
+        .tip {
+            font-size: 24px;
+            height: 30px;
+            margin: 15px 0;
+        }
+        .right {
+            color: #67c23a;
+        }
+        .wrong {
+            color: #f56c6c;
+        }
+        .next-btn {
+            padding: 12px 30px;
+            font-size: 20px;
+            background: #409eff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .result-box {
+            font-size: 24px;
+            padding: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. 开始界面 -->
+    <div class="container" id="start-screen">
+        <h1>📚 数理化基本</h1>
+        <div class="quiz-setting">
+            <p>请选择题型、抽题方式与本轮数量：</p>
+            <div>
+                <button class="btn active" id="mode-random" onclick="setMode('random')">随机抽题</button>
+                <button class="btn" id="mode-seq" onclick="setMode('sequence')">顺序抽题</button>
+            </div>
+            <div style="margin-top:15px;">
+                <button class="btn" onclick="startQuiz(10)">10 题</button>
+                <button class="btn" onclick="startQuiz(20)">20 题</button>
+                <button class="btn" onclick="startQuiz(30)">30 题</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 答题界面（默认隐藏） -->
+    <div class="container hidden" id="quiz-screen">
+        <img src="tri.png" class="tri-img" alt="直角三角形ABCabc">
+        <p class="desc">Rt△ C为直角，角对边为对应小写字母 a、b、c</p>
+
+        <div class="question" id="question"></div>
+        <div class="tip" id="tip"></div>
+
+        <div class="options">
+            <button class="opt-btn" id="opt1"></button>
+            <button class="opt-btn" id="opt2"></button>
+            <button class="opt-btn" id="opt3"></button>
+            <button class="opt-btn" id="opt4"></button>
+        </div>
+
+        <button class="next-btn" onclick="nextQuestion()">下一题</button>
+    </div>
+
+    <!-- 3. 结果界面（默认隐藏） -->
+    <div class="container hidden" id="result-screen">
+        <div class="result-box">
+            <h2>🎉 答题完成</h2>
+            <p id="result-text"></p>
+            <button class="next-btn" onclick="location.reload()">重新开始</button>
+        </div>
+    </div>
+
+    <script>
+        // ================= 题库 =================
+        const questionList = [
+            { q: "sinA = ?", correct: "a/c", opts: ["a/c", "b/c", "c/a", "a/b"] },
+            { q: "cosA = ?", correct: "b/c", opts: ["a/c", "b/c", "b/a", "c/b"] },
+            { q: "tanA = ?", correct: "a/b", opts: ["a/b", "b/a", "a/c", "b/c"] },
+            { q: "sinB = ?", correct: "b/c", opts: ["b/c", "a/c", "b/a", "c/a"] },
+            { q: "cosB = ?", correct: "a/c", opts: ["a/c", "b/c", "a/b", "c/b"] },
+            { q: "tanB = ?", correct: "b/a", opts: ["b/a", "a/b", "b/c", "a/c"] }
+        ];
+
+        // 全局设置
+        let mode = "random";
+        let quizCount = 10;
+        let currentList = [];
+        let currentIndex = 0;
+        let right = 0, wrong = 0;
+        let nowQ;
+
+        // 设置抽题模式
+        function setMode(m) {
+            mode = m;
+            document.querySelectorAll(".btn").forEach(b => b.classList.remove("active"));
+            document.getElementById(m === "random" ? "mode-random" : "mode-seq").classList.add("active");
+        }
+
+        // 开始答题
+        function startQuiz(count) {
+            quizCount = count;
+            currentList = [...questionList];
+            
+            if (mode === "random") {
+                currentList.sort(() => Math.random() - 0.5);
+            }
+            
+            currentList = currentList.slice(0, quizCount);
+            currentIndex = 0;
+            right = 0;
+            wrong = 0;
+
+            document.getElementById("start-screen").classList.add("hidden");
+            document.getElementById("quiz-screen").classList.remove("hidden");
+            renderQ();
+        }
+
+        // 打乱选项
+        function shuffle(arr) {
+            let a = [...arr];
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        // 渲染题目
+        function renderQ() {
+            nowQ = currentList[currentIndex];
+            document.getElementById("question").innerText = nowQ.q;
+            document.getElementById("tip").innerText = "";
+
+            let shuffled = shuffle(nowQ.opts);
+            for (let i = 0; i < 4; i++) {
+                let btn = document.getElementById("opt" + (i + 1));
+                btn.innerText = shuffled[i];
+                btn.className = "opt-btn";
+                btn.onclick = () => checkAnswer(shuffled[i], btn);
+            }
+        }
+
+        // 判题
+        function checkAnswer(sel, btn) {
+            let tip = document.getElementById("tip");
+            let all = document.querySelectorAll(".opt-btn");
+            
+            all.forEach(b => {
+                if (b.innerText === nowQ.correct) b.classList.add("right");
+                else b.classList.add("wrong");
+            });
+
+            if (sel === nowQ.correct) {
+                right++;
+                tip.innerText = "答对了！👍";
+                tip.className = "tip right";
+            } else {
+                wrong++;
+                tip.innerText = "答错了！";
+                tip.className = "tip wrong";
+            }
+
+            all.forEach(b => b.onclick = null);
+        }
+
+        // 下一题 / 结束
+        function nextQuestion() {
+            currentIndex++;
+            if (currentIndex >= currentList.length) {
+                showResult();
+                return;
+            }
+            renderQ();
+        }
+
+        // 显示结果
+        function showResult() {
+            document.getElementById("quiz-screen").classList.add("hidden");
+            document.getElementById("result-screen").classList.remove("hidden");
+            document.getElementById("result-text").innerText =
+                `总题数：${quizCount}\n答对：${right}\n答错：${wrong}\n正确率：${Math.round(right / quizCount * 100)}%`;
+        }
+    </script>
+</body>
+</html>

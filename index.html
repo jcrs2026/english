@@ -42,10 +42,16 @@
     <div id="start-screen">
         <h1>📚 初中单词背诵</h1>
         <p>请选择词库开始练习</p>
-        <button class="btn btn-blue" onclick="loadGrade8()">📘 八年级单词</button>
-        <button class="btn btn-blue" onclick="loadGrade9()">📙 九年级单词</button>
-        <button class="btn btn-blue" onclick="loadGrade10()">📗 收集的单词</button>
-        <button class="btn btn-blue" onclick="loadGrade11()">📕 高频考点单词</button>
+
+        <!-- 3列布局 + 第4个换行 + 新增按钮 -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; max-width: 600px; margin: 0 auto;">
+            <button class="btn btn-blue" onclick="loadGrade8()">📘 八年级单词</button>
+            <button class="btn btn-blue" onclick="loadGrade9()">📙 九年级单词</button>
+            <button class="btn btn-blue" onclick="loadGrade10()">📗 收集的单词</button>
+            <button class="btn btn-blue" onclick="loadGrade11()">📕 高频考点单词</button>
+            <!-- 改成跳转 shulihua.html -->
+            <button class="btn btn-blue" onclick="location.href='shulihua.html'">📓 数理化基本</button>
+        </div>
  
         <div id="quiz-setting" class="hidden">
             <p style="margin-top: 20px;">请选择题型、抽题方式与本轮背诵数量：</p>
