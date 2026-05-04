@@ -135,6 +135,22 @@
             display: block;
             margin: 10px auto;
         }
+        /* 针对结果页按钮组的优化 */
+        .result-btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* 统一使用 gap 控制间距，比 margin 更稳定 */
+            margin-top: 30px;
+            flex-wrap: wrap; /* 允许换行 */
+        }
+        
+        /* 针对手机端的按钮微调 */
+        @media (max-width: 400px) {
+            .next-btn {
+                padding: 10px 15px; /* 减小内边距 */
+                font-size: 16px;    /* 稍微减小字体 */
+                width: 45%;         /* 强制每个按钮占一半宽度，确保整齐 */
+            }
         }
     </style>
 </head>
@@ -492,10 +508,9 @@
                 <p style="margin: 15px 0; font-size: 26px; color: #f56c6c;">答错：<strong>${wrong}</strong></p>
                 <p style="margin: 25px 0; font-size: 28px; font-weight: bold;">正确率：${accuracy}%</p>
                 
-                <!-- 新增：回到主页按钮 -->
-                <div style="margin-top: 30px;">
-                    <!-- 【修改】去掉了 style="background-color: #909399;"，现在两个按钮都是蓝色 -->
-                    <button class="next-btn" onclick="window.location.href='index.html'" style="margin-right: 10px;">回到主页</button>
+                <!-- 新增：回到主页按钮组 -->
+                <div class="result-btn-group">
+                    <button class="next-btn" onclick="window.location.href='index.html'">回到主页</button>
                     <button class="next-btn" onclick="location.reload()">重新开始</button>
                 </div>
             `;
