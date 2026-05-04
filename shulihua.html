@@ -550,7 +550,7 @@
             if (history) {
                 // 如果答过，恢复状态
                 const tip = document.getElementById("tip");
-                tip.innerText = history.isRight ? "答对了！👍" : ("答错了！正确答案：" + nowQ.correct);
+                tip.innerText = history.isRight ? "回答正确！👍" : ("回答错误！❌");
                 tip.className = history.isRight ? "tip right" : "tip wrong";
                 
                 // 恢复选项样式
@@ -618,11 +618,12 @@
             const isRight = (sel === nowQ.correct);
             if (isRight) {
                 right++;
-                tip.innerText = "答对了！👍";
+                tip.innerText = "回答正确！👍";
                 tip.className = "tip right";
             } else {
                 wrong++;
-                tip.innerText = "答错了！正确答案：" + nowQ.correct;
+                //tip.innerText = "答错了！正确答案：" + nowQ.correct;
+                tip.innerText = "回答错误！❌";
                 tip.className = "tip wrong";
             }
 
