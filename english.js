@@ -1572,6 +1572,7 @@ const grade9Words = [
     { word: "wing", pos: "n.", meaning: "翅膀；机翼" },
 ];
 
+ //收集单词
 const grade10Words = [
     { word: "at present", pos: "n.", meaning: "现在" },
     { word: "in order", pos: "n.", meaning: "按顺序" },
@@ -1587,8 +1588,9 @@ const grade10Words = [
     { word: "bring", pos: "v.", meaning: "带来" },
     { word: "address", pos: "n.", meaning: "地址；住址" },
 ];
-
-    const grade11Words = [
+    
+//高频单词
+const grade11Words = [
     { word: "anyone", pos: "pron.", meaning: "任何人" },
     { word: "anywhere", pos: "adv.", meaning: "在任何地方；随便哪里" },
     { word: "wonderful", pos: "adj.", meaning: "绝妙的；了不起的" },
