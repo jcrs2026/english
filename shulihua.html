@@ -237,248 +237,9 @@
         </div>
     </div>
 
-    <script>
-        // ================= 题库 =================
-        const questionList = [
-            { 
-                subject: "math", // 新增：标记为数学
-                content: `
-                    <img src="pic/数学_三角形_01.jpg" alt="三角函数示意图">
-                    <div style="margin-top: 10px; font-size: 24px;">求 sinA = ?</div>
-                `, 
-                correct: "a/c", 
-                opts: ["a/c", "b/c", "c/a", "a/b"] 
-            },
-            { 
-                subject: "math", // 新增：标记为数学
-                content: `
-                    <img src="pic/数学_三角形_01.jpg" alt="三角函数示意图">
-                    <div style="margin-top: 10px; font-size: 24px;">求 cosA = ?</div>
-                `, 
-                correct: "b/c", 
-                opts: ["a/c", "b/c", "c/a", "a/b"] 
-            },
-            { 
-                subject: "math", // 新增：标记为数学
-                content: `
-                    <img src="pic/数学_三角形_01.jpg" alt="三角函数示意图">
-                    <div style="margin-top: 10px; font-size: 24px;">求 tanA = ?</div>
-                `, 
-                correct: "a/b", 
-                opts: ["a/c", "b/c", "c/a", "a/b"] 
-            },
-             { 
-                subject: "math", // 新增：标记为数学
-                content: `
-                    <img src="pic/数学_三角形_01.jpg" alt="三角函数示意图">
-                    <div style="margin-top: 10px; font-size: 24px;">求 sinB = ?</div>
-                `, 
-                correct: "b/c", 
-                opts: ["a/c", "b/c", "c/b", "a/b"] 
-            },
-            { 
-                subject: "math", // 新增：标记为数学
-                content: `
-                    <img src="pic/数学_三角形_01.jpg" alt="三角函数示意图">
-                    <div style="margin-top: 10px; font-size: 24px;">求 cosB = ?</div>
-                `, 
-                correct: "a/c", 
-                opts: ["a/c", "b/c", "c/b", "a/b"] 
-            },
-            { 
-                subject: "math", // 新增：标记为数学
-                content: `
-                    <img src="pic/数学_三角形_01.jpg" alt="三角函数示意图">
-                    <div style="margin-top: 10px; font-size: 24px;">求 tanB = ?</div>
-                `, 
-                correct: "b/a", 
-                opts: ["a/c", "b/c", "b/a", "a/b"] 
-            },
-            { //*************************数学 三角形**************************
-                subject: "math", // 新增：标记为数学
-                content: `
-                    <img src="pic/数学_三角形_02.jpg" alt="三角函数示意图">
-                    <div style="margin-top: 10px; font-size: 24px;">求 sin30° = ?</div>
-                `, 
-                correct: "1/2", 
-                opts: ["1/2", "√3/2", "√2/2", "1"] 
-            },
-            { 
-                subject: "math", // 新增：标记为数学
-                content: `
-                    <img src="pic/数学_三角形_02.jpg" alt="三角函数示意图">
-                    <div style="margin-top: 10px; font-size: 24px;">求 cos30° = ?</div>
-                `, 
-                correct: "√3/2", 
-                opts: ["1/2", "√3/2", "√2/2", "1"] 
-            },
-            { 
-                subject: "math", // 新增：标记为数学
-                content: `
-                    <img src="pic/数学_三角形_02.jpg" alt="三角函数示意图">
-                    <div style="margin-top: 10px; font-size: 24px;">求 tan30° = ?</div>
-                `, 
-                correct: "√3/3", 
-                opts: ["√3/3", "√3", "1/√3", "√2"] 
-            },
-             { //*************************数学 三角形**************************
-                subject: "math", // 新增：标记为数学
-                content: `
-                    <img src="pic/数学_三角形_02.jpg" alt="三角函数示意图">
-                    <div style="margin-top: 10px; font-size: 24px;">求 sin60° = ?</div>
-                `, 
-                correct: "√3/2", 
-                opts: ["1/2", "√3/2", "√2/2", "1"] 
-            },
-            { 
-                subject: "math", // 新增：标记为数学
-                content: `
-                    <img src="pic/数学_三角形_02.jpg" alt="三角函数示意图">
-                    <div style="margin-top: 10px; font-size: 24px;">求 cos60° = ?</div>
-                `, 
-                correct: "1/2", 
-                opts: ["1/2", "√3/2", "√2/2", "1"] 
-            },
-            { 
-                subject: "math", // 新增：标记为数学
-                content: `
-                    <img src="pic/数学_三角形_02.jpg" alt="三角函数示意图">
-                    <div style="margin-top: 10px; font-size: 24px;">求 tan60° = ?</div>
-                `, 
-                correct: "√3", 
-                opts: ["√3/3", "√3", "1/√3", "√2"] 
-            },
-            { 
-                subject: "math", // 新增：标记为数学
-                content: `
-                    <img src="pic/数学_反比例_01.jpg" alt="反比例函数示意图">
-                    <div style="margin-top: 10px; font-size: 24px;">求k的值?</div>
-                `, 
-                correct: "k>0", 
-                opts: ["k>0", "k<0", "k=0", "k≠0"] 
-            },
-            { 
-                subject: "math", // 新增：标记为数学
-                content: `
-                    <img src="pic/数学_反比例_02.jpg" alt="反比例函数示意图">
-                    <div style="margin-top: 10px; font-size: 24px;">求k的值?</div>
-                `, 
-                correct: "k<0", 
-                opts: ["k>0", "k<0", "k=0", "k≠0"] 
-            },
-            { 
-                subject: "math",
-                content: `
-                    <img src="pic/数学_反比例_01.jpg" alt="反比例函数示意图">
-                    <div style="margin-top: 10px; font-size: 24px;">x>0时, y的变化?</div>
-                `, 
-                correct: "x>0,y随x增大而减小", 
-                opts: ["x>0,y随x增大而增大", "x>0,y随x增大而减小", "x<0,y随x增大而增大", "x<0,y随x增大而减小"] 
-            },
-            { 
-                subject: "math",
-                content: `
-                    <img src="pic/数学_反比例_01.jpg" alt="反比例函数示意图">
-                    <div style="margin-top: 10px; font-size: 24px;">x<0时, y的变化?</div>
-                `, 
-                correct: "x<0,y随x增大而减小", 
-                opts: ["x>0,y随x增大而增大", "x>0,y随x增大而减小", "x<0,y随x增大而增大", "x<0,y随x增大而减小"] 
-            },
-            { 
-                subject: "math",
-                content: `
-                    <img src="pic/数学_反比例_02.jpg" alt="反比例函数示意图">
-                    <div style="margin-top: 10px; font-size: 24px;">x>0时, y的变化?</div>
-                `, 
-                correct: "x>0,y随x增大而增大", 
-                opts: ["x>0,y随x增大而增大", "x>0,y随x增大而减小", "x<0,y随x增大而增大", "x<0,y随x增大而减小"] 
-            },
-            { 
-                subject: "math",
-                content: `
-                    <img src="pic/数学_反比例_02.jpg" alt="反比例函数示意图">
-                    <div style="margin-top: 10px; font-size: 24px;">x<0时, y的变化?</div>
-                `, 
-                correct: "x<0,y随x增大而增大", 
-                opts: ["x>0,y随x增大而增大", "x>0,y随x增大而减小", "x<0,y随x增大而增大", "x<0,y随x增大而减小"] 
-            },
-            { //*************************物理 凸透镜1**************************
-                subject: "physics",
-                content: `
-                    <img src="pic/物理_凸透镜_01.jpg" alt="凸透镜成像规律图">
-                    <div style="margin-top: 10px; font-size: 24px;">如图，成像特点及应用</div>
-                `, 
-                correct: "倒立、缩小的实像，应用于照相机", 
-                opts: [
-                    "倒立、缩小的实像，应用于照相机", 
-                    "倒立、等大的实像，应用于测量焦距",
-                    "倒立、放大的实像，应用于投影仪、幻灯机",
-                    "正立、放大的虚像，应用于放大镜",
-                    "不成像，应用于探照灯",
-                ] 
-            },
-            { //*************************物理 凸透镜2**************************
-                subject: "physics",
-                content: `
-                    <img src="pic/物理_凸透镜_02.jpg" alt="凸透镜成像规律图">
-                    <div style="margin-top: 10px; font-size: 24px;">如图，成像特点及应用</div>
-                `, 
-                correct: "倒立、等大的实像，应用于测量焦距", 
-                opts: [
-                    "倒立、缩小的实像，应用于照相机", 
-                    "倒立、等大的实像，应用于测量焦距",
-                    "倒立、放大的实像，应用于投影仪、幻灯机",
-                    "不成像，应用于探照灯",
-                    "正立、放大的虚像，应用于放大镜",
-                ] 
-            },
-            { //*************************物理 凸透镜3**************************
-                subject: "physics",
-                content: `
-                    <img src="pic/物理_凸透镜_03.jpg" alt="凸透镜成像规律图">
-                    <div style="margin-top: 10px; font-size: 24px;">如图，成像特点及应用</div>
-                `, 
-                correct: "倒立、放大的实像，应用于投影仪、幻灯机", 
-                opts: [
-                    "倒立、缩小的实像，应用于照相机", 
-                    "倒立、等大的实像，应用于测量焦距",
-                    "倒立、放大的实像，应用于投影仪、幻灯机",
-                    "不成像，应用于探照灯",
-                    "正立、放大的虚像，应用于放大镜",
-                ] 
-            },
-            { //*************************物理 凸透镜4**************************
-                subject: "physics",
-                content: `
-                    <img src="pic/物理_凸透镜_04.jpg" alt="凸透镜成像规律图">
-                    <div style="margin-top: 10px; font-size: 24px;">如图，成像特点及应用</div>
-                `, 
-                correct: "不成像，应用于探照灯", 
-                opts: [
-                    "倒立、缩小的实像，应用于照相机", 
-                    "倒立、等大的实像，应用于测量焦距",
-                    "倒立、放大的实像，应用于投影仪、幻灯机",
-                    "不成像，应用于探照灯",
-                    "正立、放大的虚像，应用于放大镜",
-                ] 
-            },
-            { //*************************物理 凸透镜5**************************
-                subject: "physics",
-                content: `
-                    <img src="pic/物理_凸透镜_05.jpg" alt="凸透镜成像规律图">
-                    <div style="margin-top: 10px; font-size: 24px;">如图，成像特点及应用</div>
-                `, 
-                correct: "正立、放大的虚像，应用于放大镜", 
-                opts: [
-                    "倒立、缩小的实像，应用于照相机", 
-                    "倒立、等大的实像，应用于测量焦距",
-                    "倒立、放大的实像，应用于投影仪、幻灯机",
-                    "不成像，应用于探照灯",
-                    "正立、放大的虚像，应用于放大镜",
-                ] 
-            },
-        ];
+    <script src="shulihua.js"></script>
 
+    <script>
         // 全局设置
         let mode = "random";
         let selectedSubject = "all"; // 【新增】默认全选
@@ -530,19 +291,65 @@
             // 2. 防止题目数量超过筛选后的实际长度
             if (quizCount > filteredList.length) {
                 quizCount = filteredList.length;
-                //alert(`该条件下仅有 ${filteredList.length} 道题，已自动调整。`);
             }
             
-            // 3. 复制并处理列表
-            currentList = [...filteredList];
+            // 3. 【核心修改】均匀随机抽题算法
+            let finalList = [];
             
-            if (mode === "random") {
-                // 简单的随机打乱
-                currentList.sort(() => Math.random() - 0.5);
+            // 如果需要的题目数量大于等于总题库，直接全选并打乱
+            if (quizCount >= filteredList.length) {
+                finalList = [...filteredList];
+                finalList.sort(() => Math.random() - 0.5);
+            } else {
+                // 分层抽样策略：将题库分为 前、中、后 三段
+                const totalLen = filteredList.length;
+                const partSize = Math.ceil(totalLen / 3);
+                
+                // 切割数组
+                const part1 = filteredList.slice(0, partSize);
+                const part2 = filteredList.slice(partSize, partSize * 2);
+                const part3 = filteredList.slice(partSize * 2);
+                
+                // 计算每段应该抽取的数量 (尽量平均)
+                let count1 = Math.floor(quizCount / 3);
+                let count2 = Math.floor(quizCount / 3);
+                let count3 = quizCount - count1 - count2; // 剩余的都给第三段，防止除不尽丢失题目
+
+                // 辅助函数：从数组中随机抽取 n 个不重复元素
+                function randomPick(arr, n) {
+                    if (n <= 0) return [];
+                    if (n >= arr.length) return [...arr]; // 如果需要的比拥有的多，全拿
+                    
+                    // 复制并打乱
+                    let shuffled = [...arr].sort(() => Math.random() - 0.5);
+                    return shuffled.slice(0, n);
+                }
+
+                // 从各段抽取
+                // 注意：如果某一段题目不够，可能需要从其他段补充，这里做简化处理：
+                // 先按理想情况抽，如果某段不够，就取该段全部，剩下的名额不加了（因为总数限制）
+                // 更严谨的做法是动态调整，但为了保持代码简洁，我们假设题库足够大
+                
+                let picked1 = randomPick(part1, count1);
+                let picked2 = randomPick(part2, count2);
+                let picked3 = randomPick(part3, count3);
+                
+                // 合并
+                finalList = [...picked1, ...picked2, ...picked3];
+                
+                // 如果因为某段题目太少导致总数不足（极端情况），从剩余未选的题目中补齐
+                if (finalList.length < quizCount) {
+                    let remaining = filteredList.filter(q => !finalList.includes(q));
+                    remaining.sort(() => Math.random() - 0.5);
+                    let needMore = quizCount - finalList.length;
+                    finalList = [...finalList, ...remaining.slice(0, needMore)];
+                }
+
+                // 最后整体再次打乱，避免用户感觉到“先做简单的前段题，再做中段题”
+                finalList.sort(() => Math.random() - 0.5);
             }
-            // 如果是顺序模式，保持原样（或者你可以按 ID 排序）
-            
-            currentList = currentList.slice(0, quizCount);
+
+            currentList = finalList;
             
             currentIndex = 0;
             right = 0;
