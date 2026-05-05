@@ -33,6 +33,16 @@
         .answer-item .answer-status.wrong { color: #e74c3c; }
         .answer-item .selected-text { color: #555; font-size: 13px; }
         .hidden { display: none; }
+        .timer-display {
+            font-size: 18px;
+            color: #e67e22; /* 橙色，醒目 */
+            font-weight: bold;
+            margin-bottom: 10px;
+            background-color: #fdf2e9;
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -63,14 +73,17 @@
             <div id="sequence-start" class="hidden" style="margin-bottom: 12px;">
                 <label>从第 <input type="number" id="start-index-input" value="1" min="1" style="width: 80px; padding: 4px 8px; margin: 0 4px;" onchange="updateSequenceStart(this.value)"> 项开始</label>
             </div>
-            <button class="btn btn-outline" onclick="startQuiz(30)">30 个</button>
             <button class="btn btn-outline" onclick="startQuiz(50)">50 个</button>
             <button class="btn btn-outline" onclick="startQuiz(100)">100 个</button>
+            <button class="btn btn-outline" onclick="startQuiz(150)">150 个</button>
         </div>
     </div>
 
     <!-- 答题页面 -->
     <div id="quiz-screen" class="hidden">
+        <!-- 【新增】计时器显示 -->
+        <div class="timer-display">⏱️ 耗时: <span id="time-elapsed">00:00</span></div>
+
         <div class="progress">进度: <span id="current-count">0</span> / <span id="total-count">0</span></div>
         <div class="word-display" id="question-word">Word</div>
         <div class="options-grid" id="options-container"></div>
@@ -104,6 +117,37 @@
     let quizMode = 'en2zh';
     let selectionMode = 'random';
     let sequenceStart = 1;
+    
+    // 【新增】计时相关变量
+    let timerInterval = null;
+    let startTime = 0;
+    let elapsedTime = 0; // 单位：秒
+
+    // 【新增】格式化时间为 MM:SS
+    function formatTime(seconds) {
+        const m = Math.floor(seconds / 60);
+        const s = seconds % 60;
+        return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+    }
+
+    // 【新增】启动计时器
+    function startTimer() {
+        clearInterval(timerInterval); // 清除可能存在的旧计时器
+        startTime = Date.now();
+        elapsedTime = 0;
+        document.getElementById('time-elapsed').innerText = "00:00";
+        
+        timerInterval = setInterval(() => {
+            const now = Date.now();
+            elapsedTime = Math.floor((now - startTime) / 1000);
+            document.getElementById('time-elapsed').innerText = formatTime(elapsedTime);
+        }, 1000);
+    }
+
+    // 【新增】停止计时器
+    function stopTimer() {
+        clearInterval(timerInterval);
+    }
 
     // 加载年级单词
     function loadGrade8() {
@@ -165,6 +209,10 @@
         }
 
         currentIndex = correctAnswers = wrongAnswers = 0;
+        
+        // 【新增】启动计时器
+        startTimer();
+
         document.getElementById('start-screen').classList.add('hidden');
         document.getElementById('result-screen').classList.add('hidden');
         document.getElementById('quiz-screen').classList.remove('hidden');
@@ -278,10 +326,26 @@
 
     // 结果
     function showResult() {
+        // 【新增】停止计时器
+        stopTimer();
+
         document.getElementById('quiz-screen').classList.add('hidden');
         document.getElementById('result-screen').classList.remove('hidden');
         document.getElementById('correct-count').innerText = correctAnswers;
         document.getElementById('wrong-count').innerText = wrongAnswers;
+        
+        // 【新增】显示总耗时
+        const timeStats = document.createElement('p');
+        timeStats.style.fontSize = '18px';
+        timeStats.style.marginTop = '10px';
+        timeStats.style.color = '#333';
+        timeStats.innerHTML = `⏱️ 总耗时: <strong style="color: #e67e22;">${formatTime(elapsedTime)}</strong> (平均每题: ${(elapsedTime / (correctAnswers + wrongAnswers)).toFixed(1)}秒)`;
+        
+        // 插入到答对答错统计后面
+        const resultScreen = document.getElementById('result-screen');
+        const firstP = resultScreen.querySelector('p');
+        resultScreen.insertBefore(timeStats, firstP.nextSibling);
+
         const list = document.getElementById('answer-list');
         list.innerHTML = '';
         const wrongs = currentQuizList.filter(x => x.status === 'wrong');

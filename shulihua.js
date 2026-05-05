@@ -171,6 +171,18 @@ const questionList = [
         opts: ["35°,35°,100°", "55°,55°,90°", "35°,35°,100°", "35°,35°,90°"] 
     },
     { 
+        subject: "math",
+        content: `<div style="font-size: 24px;">-5 的相反数是？</div>`, 
+        correct: "5", 
+        opts: ["-5", "5", "1/5", "-1/5"] 
+    },
+    { 
+        subject: "math",
+        content: `<div style="font-size: 24px;">3 的倒数是？</div>`, 
+        correct: "1/3", 
+        opts: ["-3", "3", "1/3", "-1/3"] 
+    },
+    { 
         subject: "physics",
         content: `
             <img src="pic/物理_凸透镜_01.jpg" alt="凸透镜成像规律图">
