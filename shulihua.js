@@ -757,19 +757,19 @@ const questionList = [
     },
     { 
         subject: "chemistry",
-        content: `俗称“生石灰”的氧化钙？`, 
+        content: `俗称“生石灰”的主要成分？`, 
         correct: "CaO", 
         opts: ["Ca(OH)₂", "CaCO₃", "CaO", "NaCl"] 
     },
     { 
         subject: "chemistry",
-        content: `俗称“食盐”的氯化钠？`, 
+        content: `俗称“食盐”的主要成分？`, 
         correct: "NaCl", 
         opts: ["Na₂CO₃", "NaOH", "NaCl", "NaHCO₃"] 
     },
     { 
         subject: "chemistry",
-        content: `大理石、石灰石主要成分碳酸钙？`, 
+        content: `大理石、石灰石主要成分？`, 
         correct: "CaCO₃", 
         opts: ["CaO", "Ca(OH)₂", "CaCO₃", "NaCl"] 
     },
