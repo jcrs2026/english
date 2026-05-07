@@ -522,12 +522,6 @@ const questionList = [
         correct: "原子种类", 
         opts: ["分子种类", "原子种类", "物质种类", "分子数目"] 
     },
-    { 
-        subject: "chemistry",
-        content: `<div style="font-size: 24px;">配平 C + O₂ → CO₂，系数比是？</div>`, 
-        correct: "1:1:1", 
-        opts: ["1:2:1", "1:1:1", "2:1:2", "1:1:2"] 
-    },
 
     // --- 碳和碳的氧化物 ---
     { 
@@ -623,19 +617,19 @@ const questionList = [
     // --- 二、氧化物 ---
     { 
         subject: "chemistry",
-        content: `<div style="font-size: 24px;">俗称“生石灰”的氧化钙？</div>`, 
+        content: `<div style="font-size: 24px;">俗称“生石灰”主要成分？</div>`, 
         correct: "CaO", 
         opts: ["Ca(OH)₂", "CaCO₃", "CaO", "CaCl₂"] 
     },
     { 
         subject: "chemistry",
-        content: `<div style="font-size: 24px;">铁锈的主要成分（氧化铁）？</div>`, 
+        content: `<div style="font-size: 24px;">铁锈的主要成分？</div>`, 
         correct: "Fe₂O₃", 
         opts: ["FeO", "Fe₃O₄", "Fe₂O₃", "Fe(OH)₃"] 
     },
     { 
         subject: "chemistry",
-        content: `<div style="font-size: 24px;">磁铁矿的主要成分（四氧化三铁）？</div>`, 
+        content: `<div style="font-size: 24px;">磁铁矿的主要成分？</div>`, 
         correct: "Fe₃O₄", 
         opts: ["Fe₂O₃", "Fe₃O₄", "FeO", "FeS₂"] 
     },
@@ -647,7 +641,7 @@ const questionList = [
     },
     { 
         subject: "chemistry",
-        content: `<div style="font-size: 24px;">干冰（固态二氧化碳）？</div>`, 
+        content: `<div style="font-size: 24px;">干冰 主要成分？</div>`, 
         correct: "CO₂", 
         opts: ["CO", "CO₂", "SO₂", "NO₂"] 
     },
@@ -655,19 +649,19 @@ const questionList = [
     // --- 三、酸 ---
     { 
         subject: "chemistry",
-        content: `<div style="font-size: 24px;">人体胃液中含有的酸（盐酸）？</div>`, 
+        content: `<div style="font-size: 24px;">人体胃液中含有的酸？</div>`, 
         correct: "HCl", 
         opts: ["H₂SO₄", "HCl", "HNO₃", "CH₃COOH"] 
     },
     { 
         subject: "chemistry",
-        content: `<div style="font-size: 24px;">汽车铅蓄电池中含有的酸（硫酸）？</div>`, 
+        content: `<div style="font-size: 24px;">汽车铅蓄电池中含有的酸？</div>`, 
         correct: "H₂SO₄", 
         opts: ["HCl", "H₂SO₄", "HNO₃", "H₂CO₃"] 
     },
     { 
         subject: "chemistry",
-        content: `<div style="font-size: 24px;">食醋中含有的酸（乙酸/醋酸）？</div>`, 
+        content: `<div style="font-size: 24px;">食醋中含有的酸？</div>`, 
         correct: "CH₃COOH", 
         opts: ["HCl", "H₂SO₄", "CH₃COOH", "HNO₃"] 
     },
@@ -675,13 +669,13 @@ const questionList = [
     // --- 四、碱 ---
     { 
         subject: "chemistry",
-        content: `<div style="font-size: 24px;">俗称“烧碱、火碱”的氢氧化钠？</div>`, 
+        content: `<div style="font-size: 24px;">俗称“烧碱、火碱”主要成分？</div>`, 
         correct: "NaOH", 
         opts: ["Ca(OH)₂", "NaOH", "KOH", "Na₂CO₃"] 
     },
     { 
         subject: "chemistry",
-        content: `<div style="font-size: 24px;">俗称“熟石灰、消石灰”的氢氧化钙？</div>`, 
+        content: `<div style="font-size: 24px;">俗称“熟石灰、消石灰”的主要成分？</div>`, 
         correct: "Ca(OH)₂", 
         opts: ["CaO", "Ca(OH)₂", "CaCO₃", "CaCl₂"] 
     },
@@ -695,13 +689,13 @@ const questionList = [
     // --- 五、盐 ---
     { 
         subject: "chemistry",
-        content: `<div style="font-size: 24px;">俗称“纯碱、苏打”的碳酸钠？</div>`, 
+        content: `<div style="font-size: 24px;">俗称“纯碱、苏打”的主要成分？</div>`, 
         correct: "Na₂CO₃", 
         opts: ["NaOH", "NaCl", "Na₂CO₃", "NaHCO₃"] 
     },
     { 
         subject: "chemistry",
-        content: `<div style="font-size: 24px;">俗称“小苏打”的碳酸氢钠？</div>`, 
+        content: `<div style="font-size: 24px;">俗称“小苏打”的主要成分？</div>`, 
         correct: "NaHCO₃", 
         opts: ["Na₂CO₃", "NaHCO₃", "NaCl", "NaNO₃"] 
     },
@@ -713,7 +707,7 @@ const questionList = [
     },
     { 
         subject: "chemistry",
-        content: `<div style="font-size: 24px;">配制生理盐水使用的盐（氯化钠）？</div>`, 
+        content: `<div style="font-size: 24px;">配制生理盐水使用的盐？</div>`, 
         correct: "NaCl", 
         opts: ["KCl", "NaCl", "CaCl₂", "MgCl₂"] 
     },
@@ -725,7 +719,7 @@ const questionList = [
     },
     { 
         subject: "chemistry",
-        content: `<div style="font-size: 24px;">农业上常用作复合肥的硝酸钾？</div>`, 
+        content: `<div style="font-size: 24px;">农业上常用作复合肥的主要成分？</div>`, 
         correct: "KNO₃", 
         opts: ["KCl", "KNO₃", "NH₄Cl", "Ca₃(PO₄)₂"] 
     },
@@ -733,43 +727,31 @@ const questionList = [
     // --- 六、常见有机物 ---
     { 
         subject: "chemistry",
-        content: `<div style="font-size: 24px;">天然气、沼气的主要成分（甲烷）？</div>`, 
+        content: `<div style="font-size: 24px;">天然气、沼气的主要成分？</div>`, 
         correct: "CH₄", 
         opts: ["C₂H₅OH", "CH₄", "CO", "H₂"] 
     },
     { 
         subject: "chemistry",
-        content: `<div style="font-size: 24px;">医用酒精、乙醇？</div>`, 
-        correct: "C₂H₅OH", 
-        opts: ["CH₃OH", "C₂H₅OH", "CH₃COOH", "C₆H₁₂O₆"] 
-    },
-    { 
-        subject: "chemistry",
-        content: `<div style="font-size: 24px;">人体主要供能物质葡萄糖？</div>`, 
-        correct: "C₆H₁₂O₆", 
-        opts: ["C₁₂H₂₂O₁₁", "C₆H₁₂O₆", "C₂H₅OH", "CH₄"] 
-    },
-    { 
-        subject: "chemistry",
-        content: `俗称“纯碱、苏打”的碳酸钠？`, 
+        content: `俗称“纯碱、苏打”的主要成分？`, 
         correct: "Na₂CO₃", 
         opts: ["NaOH", "NaCl", "Na₂CO₃", "NaHCO₃"] 
     },
     { 
         subject: "chemistry",
-        content: `俗称“小苏打”的碳酸氢钠？`, 
+        content: `俗称“小苏打”的主要成分？`, 
         correct: "NaHCO₃", 
         opts: ["Na₂CO₃", "NaCl", "NaOH", "NaHCO₃"] 
     },
     { 
         subject: "chemistry",
-        content: `俗称“烧碱、火碱、苛性钠”的氢氧化钠？`, 
+        content: `俗称“烧碱、火碱、苛性钠”的主要成分？`, 
         correct: "NaOH", 
         opts: ["NaCl", "Na₂CO₃", "NaOH", "Ca(OH)₂"] 
     },
     { 
         subject: "chemistry",
-        content: `俗称“熟石灰、消石灰”的氢氧化钙？`, 
+        content: `俗称“熟石灰、消石灰”的主要成分？`, 
         correct: "Ca(OH)₂", 
         opts: ["NaOH", "CaO", "Ca(OH)₂", "NaCl"] 
     },
@@ -799,27 +781,15 @@ const questionList = [
     },
     { 
         subject: "chemistry",
-        content: `双氧水的主要成分过氧化氢？`, 
+        content: `双氧水的主要成分？`, 
         correct: "H₂O₂", 
         opts: ["H₂O", "CO₂", "H₂O₂", "O₂"] 
     },
     { 
         subject: "chemistry",
-        content: `天然气、沼气主要成分甲烷？`, 
+        content: `天然气、沼气主要成分？`, 
         correct: "CH₄", 
         opts: ["C₂H₅OH", "CH₃COOH", "CH₄", "C₆H₁₂O₆"] 
-    },
-    { 
-        subject: "chemistry",
-        content: `酒精的主要成分乙醇？`, 
-        correct: "C₂H₅OH", 
-        opts: ["CH₄", "CH₃COOH", "C₂H₅OH", "C₆H₁₂O₆"] 
-    },
-    { 
-        subject: "chemistry",
-        content: `醋酸的主要成分乙酸？`, 
-        correct: "CH₃COOH", 
-        opts: ["C₂H₅OH", "CH₄", "CH₃COOH", "C₆H₁₂O₆"] 
     },
     { 
         subject: "chemistry",
@@ -919,12 +889,6 @@ const questionList = [
     },
     { 
         subject: "chemistry",
-        content: `硫酸铜晶体（胆矾）的化学式？`, 
-        correct: "CuSO₄·5H₂O", 
-        opts: ["CuSO₄", "CuO", "Cu(OH)₂", "CuSO₄·5H₂O"] 
-    },
-    { 
-        subject: "chemistry",
         content: `五氧化二磷的化学式？`, 
         correct: "P₂O₅", 
         opts: ["P", "PO₂", "P₂O₃", "P₂O₅"] 
@@ -1006,12 +970,6 @@ const questionList = [
         content: `用一个重10N的物体作为阻力，动力臂为0.4m，阻力臂为0.2m，所需动力为？`, 
         correct: "5N", 
         opts: ["5N", "10N", "20N", "40N"] 
-    },
-    {   
-        subject: "physics",
-        content: `下列哪种情况，杠杆一定不能平衡？`, 
-        correct: "动力×动力臂 ≠ 阻力×阻力臂", 
-        opts: ["动力臂大于阻力臂，动力小于阻力", "动力臂小于阻力臂，动力大于阻力", "动力×动力臂 ≠ 阻力×阻力臂", "动力臂等于阻力臂，动力等于阻力"] 
     },
     { 
         subject: "physics",
@@ -1227,5 +1185,223 @@ const questionList = [
         content: `冬天用热水袋取暖，主要改变人体内能的方式是？`, 
         correct: "热传递", 
         opts: ["做功", "热传递", "摩擦生热", "扩散"] 
+    },
+    { 
+        subject: "physics",
+        content: `
+            <img src="pic/物理_凸透镜_01.jpg" alt="凸透镜成像规律图">
+            <div style="margin-top: 10px; font-size: 24px;">如图，应用于</div>
+        `, 
+        correct: "照相机", 
+        opts: ["照相机", "测量焦距", "投影仪、幻灯机", "放大镜"] 
+    },
+    { 
+        subject: "physics",
+        content: `
+            <img src="pic/物理_凸透镜_02.jpg" alt="凸透镜成像规律图">
+            <div style="margin-top: 10px; font-size: 24px;">如图，应用于</div>
+        `, 
+        correct: "测量焦距", 
+        opts: ["照相机", "测量焦距", "投影仪、幻灯机", "放大镜"] 
+    },
+    { 
+        subject: "physics",
+        content: `
+            <img src="pic/物理_凸透镜_03.jpg" alt="凸透镜成像规律图">
+            <div style="margin-top: 10px; font-size: 24px;">如图，应用于</div>
+        `, 
+        correct: "投影仪、幻灯机", 
+        opts: [
+            "照相机", 
+            "测量焦距",
+            "投影仪、幻灯机",
+            "放大镜",
+        ] 
+    },
+    { 
+        subject: "physics",
+        content: `
+            <img src="pic/物理_凸透镜_04.jpg" alt="凸透镜成像规律图">
+            <div style="margin-top: 10px; font-size: 24px;">如图，应用于</div>
+        `, 
+        correct: "探照灯", 
+        opts: [
+            "测量焦距",
+            "投影仪、幻灯机",
+            "探照灯",
+            "放大镜",
+        ] 
+    },
+    { 
+        subject: "physics",
+        content: `
+            <img src="pic/物理_凸透镜_05.jpg" alt="凸透镜成像规律图">
+            <div style="margin-top: 10px; font-size: 24px;">如图，应用于</div>
+        `, 
+        correct: "放大镜", 
+        opts: [
+            "照相机", 
+            "测量焦距",
+            "探照灯",
+            "放大镜",
+        ] 
+    },
+    { 
+        subject: "physics",
+        content: `物距大于2倍焦距, u>2f,成像特点？`, 
+        correct: "倒立、缩小的实像，应用于照相机", 
+        opts: [
+            "倒立、缩小的实像，应用于照相机", 
+            "倒立、等大的实像，应用于测量焦距",
+            "倒立、放大的实像，应用于投影仪、幻灯机",
+            "正立、放大的虚像，应用于放大镜",
+        ] 
+    },
+    { 
+        subject: "physics",
+        content: `物距等于2倍焦距,u=2f,成像特点？`, 
+        correct: "倒立、等大的实像，应用于测量焦距", 
+        opts: [
+            "倒立、缩小的实像，应用于照相机", 
+            "倒立、等大的实像，应用于测量焦距",
+            "倒立、放大的实像，应用于投影仪、幻灯机",
+            "正立、放大的虚像，应用于放大镜",
+        ] 
+    },
+    { 
+        subject: "physics",
+        content: `物距小于2倍大于1倍焦距, f < u < 2f, 成像特点？`, 
+        correct: "倒立、放大的实像，应用于投影仪、幻灯机", 
+        opts: [
+            "倒立、缩小的实像，应用于照相机", 
+            "倒立、等大的实像，应用于测量焦距",
+            "倒立、放大的实像，应用于投影仪、幻灯机",
+            "不成像，应用于探照灯",
+        ] 
+    },
+    { 
+        subject: "physics",
+        content: `物距等于1倍焦距,u=f,成像特点？`, 
+        correct: "不成像，应用于探照灯", 
+        opts: [
+            "倒立、等大的实像，应用于测量焦距",
+            "倒立、放大的实像，应用于投影仪、幻灯机",
+            "不成像，应用于探照灯",
+            "正立、放大的虚像，应用于放大镜",
+        ] 
+    },
+    { 
+        subject: "physics",
+        content: `物距小于焦距,u<f,成像特点？`, 
+        correct: "正立、放大的虚像，应用于放大镜", 
+        opts: [
+            "倒立、缩小的实像，应用于照相机", 
+            "倒立、等大的实像，应用于测量焦距",
+            "不成像，应用于探照灯",
+            "正立、放大的虚像，应用于放大镜",
+        ] 
+    },
+    { 
+        subject: "chemistry",
+        content: `<div style="font-size: 24px;">下列反应属于化合反应的是？</div>`, 
+        correct: "C + O₂ = CO₂ (点燃)", 
+        opts: [
+            "C + O₂ = CO₂ (点燃)", 
+            "2H₂O = 2H₂↑ + O₂↑ (通电)",
+            "Fe + CuSO₄ = FeSO₄ + Cu",
+            "NaOH + HCl = NaCl + H₂O"
+        ] 
+    },
+    { 
+        subject: "chemistry",
+        content: `<div style="font-size: 24px;">实验室加热高锰酸钾制氧气属于？</div>`, 
+        correct: "分解反应", 
+        opts: ["化合反应", "分解反应", "置换反应", "复分解反应"] 
+    },
+    { 
+        subject: "chemistry",
+        content: `<div style="font-size: 24px;">湿法炼铜的原理 Fe + CuSO₄ = FeSO₄ + Cu 属于？</div>`, 
+        correct: "置换反应", 
+        opts: ["化合反应", "分解反应", "置换反应", "复分解反应"] 
+    },
+    { 
+        subject: "chemistry",
+        content: `<div style="font-size: 24px;">下列反应属于复分解反应的是？</div>`, 
+        correct: "Ca(OH)₂ + Na₂CO₃ = CaCO₃↓ + 2NaOH", 
+        opts: [
+            "CaO + H₂O = Ca(OH)₂",
+            "2KMnO₄ = K₂MnO₄ + MnO₂ + O₂↑",
+            "Zn + H₂SO₄ = ZnSO₄ + H₂↑",
+            "Ca(OH)₂ + Na₂CO₃ = CaCO₃↓ + 2NaOH"
+        ] 
+    },
+    { 
+        subject: "chemistry",
+        content: `<div style="font-size: 24px;">氢气还原氧化铜 H₂ + CuO = Cu + H₂O 属于？</div>`, 
+        correct: "置换反应", 
+        opts: ["化合反应", "分解反应", "置换反应", "复分解反应"] 
+    },
+    // --- 新增：四大基本反应类型进阶专项 ---
+    { 
+        subject: "chemistry",
+        content: `<div style="font-size: 24px;">下列反应中，属于置换反应的是？</div>`, 
+        correct: "H₂ + CuO = Cu + H₂O (加热)", 
+        opts: [
+            "3CO + Fe₂O₃ = 2Fe + 3CO₂ (高温)",
+            "H₂ + CuO = Cu + H₂O (加热)",
+            "CH₄ + 2O₂ = CO₂ + 2H₂O (点燃)",
+            "CO₂ + C = 2CO (高温)"
+        ] 
+    },
+    { 
+        subject: "chemistry",
+        content: `<div style="font-size: 24px;">工业上煅烧石灰石制取生石灰 CaCO₃ = CaO + CO₂↑ 属于？</div>`, 
+        correct: "分解反应", 
+        opts: ["化合反应", "分解反应", "置换反应", "复分解反应"] 
+    },
+    { 
+        subject: "chemistry",
+        content: `<div style="font-size: 24px;">用小苏打治疗胃酸过多 NaHCO₃ + HCl = NaCl + H₂O + CO₂↑ 属于？</div>`, 
+        correct: "复分解反应", 
+        opts: ["化合反应", "分解反应", "置换反应", "复分解反应"] 
+    },
+    { 
+        subject: "chemistry",
+        content: `<div style="font-size: 24px;">下列反应既不属于化合也不属于分解反应的是？</div>`, 
+        correct: "Zn + H₂SO₄ = ZnSO₄ + H₂↑", 
+        opts: [
+            "S + O₂ = SO₂ (点燃)",
+            "2H₂O₂ = 2H₂O + O₂↑",
+            "Zn + H₂SO₄ = ZnSO₄ + H₂↑",
+            "CaO + H₂O = Ca(OH)₂"
+        ] 
+    },
+    { 
+        subject: "chemistry",
+        content: `<div style="font-size: 24px;">铁丝在氧气中燃烧 3Fe + 2O₂ = Fe₃O₄ (点燃) 属于？</div>`, 
+        correct: "化合反应", 
+        opts: ["化合反应", "分解反应", "置换反应", "复分解反应"] 
+    },
+    { 
+        subject: "chemistry",
+        content: `<div style="font-size: 24px;">在实验室配制溶液时，下列操作不能加快固体溶解速度的是？</div>`, 
+        correct: "增加溶剂的质量", 
+        opts: [
+            "用玻璃棒不断搅拌",
+            "将固体研成粉末状",
+            "适当升高温度",
+            "增加溶剂的质量"
+        ] 
+    },
+    { 
+        subject: "chemistry",
+        content: `<div style="font-size: 24px;">将大块冰糖放入水中，为了使其快速溶解，最合理的组合措施是？</div>`, 
+        correct: "研碎、搅拌并加热", 
+        opts: [
+            "直接放入冷水中静置",
+            "研碎后放入冷水中静置",
+            "整块放入热水中搅拌",
+            "研碎、搅拌并加热"
+        ] 
     }
 ];
