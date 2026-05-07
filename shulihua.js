@@ -165,10 +165,28 @@ const questionList = [
         subject: "math",
         content: `
             <img src="pic/数学_圆_01.jpg" alt="圆示意图">
-            <div style="margin-top: 10px; font-size: 24px;">已知AC是直径,∠BOC=70°, 求∠BAC、∠BDC、∠ABC的度数.</div>
+            <div style="margin-top: 10px; font-size: 24px;">已知AC是直径,∠BOC=70°, 求∠BAC的度数.</div>
         `, 
-        correct: "35°,35°,90°", 
-        opts: ["35°,35°,100°", "55°,55°,90°", "35°,35°,100°", "35°,35°,90°"] 
+        correct: "35°", 
+        opts: ["35°", "55°", "110°", "90°"] 
+    },
+    { 
+        subject: "math",
+        content: `
+            <img src="pic/数学_圆_01.jpg" alt="圆示意图">
+            <div style="margin-top: 10px; font-size: 24px;">已知AC是直径,∠BOC=70°, 求∠BDC的度数.</div>
+        `, 
+        correct: "35°", 
+        opts: ["35°", "55°", "110°", "90°"] 
+    },
+    { 
+        subject: "math",
+        content: `
+            <img src="pic/数学_圆_01.jpg" alt="圆示意图">
+            <div style="margin-top: 10px; font-size: 24px;">已知AC是直径,∠BOC=70°, 求∠ABC的度数.</div>
+        `, 
+        correct: "90°", 
+        opts: ["35°", "55°", "110°", "90°"] 
     },
     { 
         subject: "math",
@@ -1000,5 +1018,124 @@ const questionList = [
         content: `下列关于杠杆的说法，正确的是？`, 
         correct: "杠杆可以是直的，也可以是弯的", 
         opts: ["杠杆一定是直的，不能是弯的", "杠杆可以是直的，也可以是弯的", "所有杠杆都能省力", "所有杠杆都能省距离"] 
+    },
+    { 
+        subject: "physics",
+        content: `
+            <img src="pic/物理_力学_01.jpg" alt="物理力学图">
+            <div style="margin-top: 10px; font-size: 24px;">物体的重力G = ？</div>
+        `, 
+        correct: "10N", 
+        opts: ["6N", "10N","4N","不确定",
+        ] 
+    },
+    { 
+        subject: "physics",
+        content: `
+            <img src="pic/物理_力学_01.jpg" alt="物理力学图">
+            <div style="margin-top: 10px; font-size: 24px;">浮力F = ？</div>
+        `, 
+        correct: "4N", 
+        opts: ["6N", "10N","4N","不确定",
+        ] 
+    },
+    { 
+        subject: "math", 
+        content: `
+            <img src="pic/数学_一元一次_01.jpg" alt="一元一次示意图">
+            <div style="margin-top: 10px; font-size: 24px;">如图y=kx+b, k=? b=?</div>
+        `, 
+        correct: "k>0,b>0", 
+        opts: ["k>0,b>0", "k>0,b<0", "k<0,b>0", "k<0,b<0"] 
+    },
+    { 
+        subject: "math", 
+        content: `
+            <img src="pic/数学_一元一次_02.jpg" alt="一元一次示意图">
+            <div style="margin-top: 10px; font-size: 24px;">如图y=kx+b, k=? b=?</div>
+        `, 
+        correct: "k>0,b<0", 
+        opts: ["k>0,b>0", "k>0,b<0", "k<0,b>0", "k<0,b<0"] 
+    },
+    { 
+        subject: "math", 
+        content: `
+            <img src="pic/数学_一元一次_03.jpg" alt="一元一次示意图">
+            <div style="margin-top: 10px; font-size: 24px;">如图y=kx+b, k=? b=?</div>
+        `, 
+        correct: "k<0,b>0", 
+        opts: ["k>0,b>0", "k>0,b<0", "k<0,b>0", "k<0,b<0"] 
+    },
+    { 
+        subject: "math", 
+        content: `
+            <img src="pic/数学_一元一次_04.jpg" alt="一元一次示意图">
+            <div style="margin-top: 10px; font-size: 24px;">如图y=kx+b, k=? b=?</div>
+        `, 
+        correct: "k<0,b<0", 
+        opts: ["k>0,b>0", "k>0,b<0", "k<0,b>0", "k<0,b<0"] 
+    },
+    { 
+        subject: "physics", 
+        content: `
+            <img src="pic/物理_电磁_01.jpg" alt="物理_电磁示意图">
+            <div style="margin-top: 10px; font-size: 24px;">原理相同的是?</div>
+        `, 
+        correct: "电动机", 
+        opts: ["电动机", "发电机", "电铃", "指南针"] 
+    },
+    { 
+        subject: "physics", 
+        content: `
+            <img src="pic/物理_电磁_02.jpg" alt="物理_电磁示意图">
+            <div style="margin-top: 10px; font-size: 24px;">原理相同的是?</div>
+        `, 
+        correct: "电动机", 
+        opts: ["电动机", "发电机", "电铃", "指南针"] 
+    },
+    { 
+        subject: "physics", 
+        content: `
+            <img src="pic/物理_电磁_03.jpg" alt="物理_电磁示意图">
+            <div style="margin-top: 10px; font-size: 24px;">原理相同的是?</div>
+        `, 
+        correct: "电动机", 
+        opts: ["电动机", "发电机", "电铃", "指南针"] 
+    },
+    { 
+        subject: "physics", 
+        content: `
+            <img src="pic/物理_电磁_04.jpg" alt="物理_电磁示意图">
+            <div style="margin-top: 10px; font-size: 24px;">原理相同的是?</div>
+        `, 
+        correct: "发电机", 
+        opts: ["电动机", "发电机", "电铃", "指南针"] 
+    },
+    { 
+        subject: "physics", 
+        content: `
+            <img src="pic/物理_电磁_05.jpg" alt="物理_电磁示意图">
+            <div style="margin-top: 10px; font-size: 24px;">原理相同的是?</div>
+        `, 
+        correct: "发电机", 
+        opts: ["电动机", "发电机", "电铃", "指南针"] 
+    },
+    { 
+        subject: "physics", 
+        content: `
+            <img src="pic/物理_电磁_06.jpg" alt="物理_电磁示意图">
+            <div style="margin-top: 10px; font-size: 24px;">原理相同的是?</div>
+        `, 
+        correct: "发电机", 
+        opts: ["电动机", "发电机", "电铃", "指南针"] 
+    },
+    { 
+        subject: "physics", 
+        content: `
+            <img src="pic/物理_电磁_07.jpg" alt="物理_电磁示意图">
+            <div style="margin-top: 10px; font-size: 24px;">原理相同的是?</div>
+        `, 
+        correct: "电铃", 
+        opts: ["电动机", "发电机", "电铃", "指南针"] 
     },
 ];

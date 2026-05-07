@@ -258,9 +258,43 @@
             fb.innerText = '';
         }
 
+        // --- 修改开始：智能筛选同词性干扰项 ---
         let options = [w];
-        const others = fullWordList.filter(x => x.word !== w.word).sort(() => Math.random() - 0.5).slice(0, 5);
-        options = [...options, ...others].sort(() => Math.random() - 0.5);
+        
+        // 仅在“英选中的模式”下尝试匹配词性
+        if (quizMode === 'en2zh') {
+            const currentPos = (w.pos || '').trim().toLowerCase();
+            
+            // 1. 筛选同词性的单词池 (排除当前单词)
+            let samePosPool = fullWordList.filter(x => 
+                x.word !== w.word && 
+                (x.pos || '').trim().toLowerCase() === currentPos
+            );
+
+            // 2. 如果同词性单词不足5个，则混合其他单词
+            let others = [];
+            if (samePosPool.length >= 5) {
+                // 足够则只从同词性中随机取5个
+                others = samePosPool.sort(() => Math.random() - 0.5).slice(0, 5);
+            } else {
+                // 不足则全部取用同词性的，剩下的从其他单词中补全
+                others = [...samePosPool];
+                const otherPool = fullWordList.filter(x => 
+                    x.word !== w.word && 
+                    (x.pos || '').trim().toLowerCase() !== currentPos
+                );
+                const needed = 5 - others.length;
+                others = [...others, ...otherPool.sort(() => Math.random() - 0.5).slice(0, needed)];
+            }
+            
+            options = [...options, ...others].sort(() => Math.random() - 0.5);
+        } else {
+            // “中选英”模式保持原有逻辑（通常中文释义很难严格对应词性过滤，或者需求未提及）
+            const others = fullWordList.filter(x => x.word !== w.word).sort(() => Math.random() - 0.5).slice(0, 5);
+            options = [...options, ...others].sort(() => Math.random() - 0.5);
+        }
+        // --- 修改结束 ---
+
         const box = document.getElementById('options-container');
         box.innerHTML = '';
         options.forEach(opt => {
