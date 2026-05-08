@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数理化基本 - 三角函数专项练习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "微软雅黑", sans-serif;
+        }
+        body {
+            padding: 30px;
+            background-color: #f5f7fa;
+            text-align: center;
+        }
+        .container {
+            max-width: 550px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px #ccc;
+        }
+
+        /* 开始界面 */
+        .start-screen {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .start-screen h1 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .quiz-setting {
+            margin-top: 20px;
+        }
+        .quiz-setting p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: 2px solid #409eff;
+            background: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 6px;
+        }
+        .btn.active {
+            background: #409eff;
+            color: #fff;
+        }
+        .hidden {
+            display: none !important;
+        }
+
+        /* 三角形图片 */
+        .tri-img {
+            width: 260px;
+            margin: 10px auto;
+        }
+        .desc {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .question {
+            font-size: 28px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .opt-btn {
+            padding: 15px;
+            font-size: 18px; /* 【修改】从 22px 减小到 18px，给长文字留空间 */
+            border: 2px solid #409eff;
+            background: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            
+            /* 【新增】支持长文字换行 */
+            white-space: normal; 
+            word-wrap: break-word;
+            line-height: 1.4;
+            min-height: 60px; /* 保持按钮最小高度，防止太扁 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .opt-btn:hover {
+            background: #409eff;
+            color: #fff;
+        }
+        .opt-btn.right {
+            background: #67c23a;
+            color: #fff;
+            border-color: #67c23a;
+        }
+        .opt-btn.wrong {
+            background: #f56c6c;
+            color: #fff;
+            border-color: #f56c6c;
+        }
+        .tip {
+            font-size: 24px;
+            height: 30px;
+            margin: 15px 0;
+        }
+        .right {
+            color: #67c23a;
+        }
+        .wrong {
+            color: #f56c6c;
+        }
+        .next-btn {
+            padding: 12px 30px;
+            font-size: 20px;
+            background: #409eff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .result-box {
+            font-size: 24px;
+            padding: 20px;
+            color: #333;
+        }
+        .question img {
+            max-width: 100%;      /* 确保不超出容器 */
+            width: auto;          /* 保持原始比例，除非被 max-width 限制 */
+            max-height: 150px;    /* 限制高度，防止长图占据整个屏幕 */
+            display: block;
+            margin: 10px auto;
+        }
+        /* 针对结果页按钮组的优化 */
+        .result-btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* 统一使用 gap 控制间距，比 margin 更稳定 */
+            margin-top: 30px;
+            flex-wrap: wrap; /* 允许换行 */
+        }
+        
+        /* 针对手机端的按钮微调 */
+        @media (max-width: 400px) {
+            .next-btn {
+                padding: 10px 15px; /* 减小内边距 */
+                font-size: 16px;    /* 稍微减小字体 */
+                width: 45%;         /* 强制每个按钮占一半宽度，确保整齐 */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. 开始界面 -->
+    <div class="container" id="start-screen">
+        <h1>📚 数理化基本</h1>
+        <div class="quiz-setting">
+            
+            <!-- 【新增】科目筛选 -->
+            <p style="margin-top: 20px; margin-bottom: 10px; font-weight: bold;">请选择科目：</p>
+            <div id="subject-filter">
+                <button class="btn active" onclick="setSubject('all', this)">全部</button>
+                <button class="btn" onclick="setSubject('daofa', this)">道法</button>
+                <button class="btn" onclick="setSubject('lishi', this)">历史</button>
+            </div>
+
+            <p style="margin-top: 20px; margin-bottom: 10px;">请选择题型与本轮数量：</p>
+            <div>
+                <button class="btn active" id="mode-random" onclick="setMode('random')">随机抽题</button>
+                <button class="btn" id="mode-seq" onclick="setMode('sequence')">顺序抽题</button>
+            </div>
+            
+            <div id="seq-start-container" style="margin-top: 15px; display: none;">
+                <label style="font-size: 16px; color: #666;">从第 </label>
+                <input type="number" id="seq-start-index" value="1" min="1" style="width: 60px; padding: 5px; font-size: 16px; text-align: center;">
+                <label style="font-size: 16px; color: #666;"> 题开始</label>
+            </div>
+            
+            <div style="margin-top:15px;">
+                <button class="btn" onclick="startQuiz(30)">30 题</button>
+                <button class="btn" onclick="startQuiz(50)">50 题</button>
+                <button class="btn" onclick="startQuiz(100)">100 题</button>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <button class="btn" onclick="window.location.href='index.html'">
+                    🏠 回到主页
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 答题界面（默认隐藏） -->
+    <div class="container hidden" id="quiz-screen">
+        <!-- 新增：进度显示 -->
+        <div style="font-size: 18px; color: #909399; margin-bottom: 10px;">
+            进度：<span id="progress-text">1/15</span>
+        </div>
+
+        <!-- 已删除固定的 tri-img 和 desc -->
+        <div class="question" id="question"></div>
+        
+        <!-- 选项区域 -->
+        <div class="options">
+            <button class="opt-btn" id="opt1"></button>
+            <button class="opt-btn" id="opt2"></button>
+            <button class="opt-btn" id="opt3"></button>
+            <button class="opt-btn" id="opt4"></button>
+        </div>
+
+        <!-- 提示区域：移动到选项下方 -->
+        <div class="tip" id="tip"></div>
+
+        <!-- 按钮区域 -->
+        <div style="display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
+            <button class="next-btn" id="prev-btn" onclick="prevQuestion()">上一题</button>
+            <button class="next-btn" id="next-btn" onclick="nextQuestion()">下一题</button>
+        </div>
+    </div>
+
+    <!-- 3. 结果界面（默认隐藏） -->
+    <div class="container hidden" id="result-screen">
+        <div class="result-box">
+            <h2>🎉 答题完成</h2>
+            <!-- 这里的 p 标签内容由 JS 填充，包括按钮 -->
+            <p id="result-text"></p>
+            
+            <!-- 【删除】原本这里的 <button class="next-btn" onclick="location.reload()">重新开始</button> 删掉 -->
+        </div>
+    </div>
+
+    <script src="daofalishi.js"></script>
+
+    <script>
+        // 全局设置
+        let mode = "random";
+        let selectedSubject = "all"; // 【新增】默认全选
+        let quizCount = 10;
+        let currentList = [];
+        let currentIndex = 0;
+        let right = 0, wrong = 0;
+        let nowQ;
+        let answerHistory = []; // 存储答题历史
+
+        // 【修改】设置抽题模式：控制输入框的显示/隐藏
+        function setMode(m) {
+            mode = m;
+            document.getElementById("mode-random").classList.toggle("active", m === 'random');
+            document.getElementById("mode-seq").classList.toggle("active", m === 'sequence');
+            
+            // 控制起始题号输入框的显示
+            const seqContainer = document.getElementById("seq-start-container");
+            if (m === 'sequence') {
+                seqContainer.style.display = "block";
+            } else {
+                seqContainer.style.display = "none";
+            }
+        }
+
+        // 设置科目筛选
+        function setSubject(sub, btnElement) {
+            selectedSubject = sub;
+            const subjectBtns = document.querySelectorAll("#subject-filter .btn");
+            subjectBtns.forEach(b => b.classList.remove("active"));
+            if (btnElement) {
+                btnElement.classList.add("active");
+            }
+        }
+
+        // 【修改】开始答题：增加起始位置逻辑
+        function startQuiz(count) {
+            quizCount = count;
+            
+            // 1. 根据科目筛选题库
+            let filteredList = questionList;
+            if (selectedSubject !== 'all') {
+                filteredList = questionList.filter(q => q.subject === selectedSubject);
+            }
+
+            if (filteredList.length === 0) {
+                alert("该科目下暂无题目！");
+                return;
+            }
+
+            // 2. 【核心修改】处理顺序抽题的起始位置
+            let startIndex = 0; // 默认从第1题（索引0）开始
+            
+            if (mode === 'sequence') {
+                const inputVal = document.getElementById("seq-start-index").value;
+                // 获取用户输入的起始题号（例如输入1，代表索引0）
+                startIndex = parseInt(inputVal) - 1; 
+                
+                // 边界检查：防止起始位置超出题库范围
+                if (startIndex < 0) startIndex = 0;
+                if (startIndex >= filteredList.length) {
+                    alert(`起始题号不能超过总题数 ${filteredList.length}`);
+                    return;
+                }
+            }
+
+            let finalList = [];
+
+            if (mode === 'sequence') {
+                // --- 顺序模式逻辑 ---
+                // 从 startIndex 开始截取
+                let availableQuestions = filteredList.slice(startIndex);
+                
+                // 如果需要的数量超过剩余数量，则取全部剩余
+                if (quizCount > availableQuestions.length) {
+                    quizCount = availableQuestions.length;
+                }
+                
+                // 截取指定数量
+                finalList = availableQuestions.slice(0, quizCount);
+                
+            } else {
+                // --- 随机模式逻辑 (保持原有分层抽样算法) ---
+                if (quizCount > filteredList.length) {
+                    quizCount = filteredList.length;
+                }
+                
+                if (quizCount >= filteredList.length) {
+                    finalList = [...filteredList];
+                    finalList.sort(() => Math.random() - 0.5);
+                } else {
+                    const totalLen = filteredList.length;
+                    const partSize = Math.ceil(totalLen / 3);
+                    const part1 = filteredList.slice(0, partSize);
+                    const part2 = filteredList.slice(partSize, partSize * 2);
+                    const part3 = filteredList.slice(partSize * 2);
+                    
+                    let count1 = Math.floor(quizCount / 3);
+                    let count2 = Math.floor(quizCount / 3);
+                    let count3 = quizCount - count1 - count2;
+
+                    function randomPick(arr, n) {
+                        if (n <= 0) return [];
+                        if (n >= arr.length) return [...arr];
+                        let shuffled = [...arr].sort(() => Math.random() - 0.5);
+                        return shuffled.slice(0, n);
+                    }
+
+                    let picked1 = randomPick(part1, count1);
+                    let picked2 = randomPick(part2, count2);
+                    let picked3 = randomPick(part3, count3);
+                    
+                    finalList = [...picked1, ...picked2, ...picked3];
+                    
+                    if (finalList.length < quizCount) {
+                        let remaining = filteredList.filter(q => !finalList.includes(q));
+                        remaining.sort(() => Math.random() - 0.5);
+                        let needMore = quizCount - finalList.length;
+                        finalList = [...finalList, ...remaining.slice(0, needMore)];
+                    }
+                    finalList.sort(() => Math.random() - 0.5);
+                }
+            }
+
+            currentList = finalList;
+            currentIndex = 0;
+            right = 0;
+            wrong = 0;
+            answerHistory = []; 
+
+            document.getElementById("start-screen").classList.add("hidden");
+            document.getElementById("quiz-screen").classList.remove("hidden");
+            
+            renderQ();
+            updateNavButtons();
+        }
+
+        // 更新导航按钮状态（禁用/启用上一题）
+        function updateNavButtons() {
+            const prevBtn = document.getElementById("prev-btn");
+            if (!prevBtn) return; // 安全校验
+            
+            if (currentIndex === 0) {
+                prevBtn.disabled = true;
+                prevBtn.style.opacity = "0.5";
+                prevBtn.style.cursor = "not-allowed";
+            } else {
+                prevBtn.disabled = false;
+                prevBtn.style.opacity = "1";
+                prevBtn.style.cursor = "pointer";
+            }
+        }
+
+        // 打乱选项算法
+        function shuffle(arr) {
+            let a = [...arr];
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        // 渲染题目
+        function renderQ() {
+            nowQ = currentList[currentIndex];
+
+            // 【新增】更新进度显示 (当前索引+1 / 总题数)
+            document.getElementById("progress-text").innerText = `${currentIndex + 1}/${currentList.length}`;
+
+            const questionEl = document.getElementById("question");
+            
+            // 支持 HTML 内容（图片/公式）
+            if (nowQ.content) {
+                questionEl.innerHTML = nowQ.content;
+            } else {
+                questionEl.innerText = "题目内容缺失";
+            }
+
+            // 检查是否已答过（用于“上一题”回看）
+            const history = answerHistory[currentIndex];
+            
+            if (history) {
+                // 如果答过，恢复状态
+                const tip = document.getElementById("tip");
+                tip.innerText = history.isRight ? "回答正确！👍" : ("回答错误！❌");
+                tip.className = history.isRight ? "tip right" : "tip wrong";
+                
+                // 恢复选项样式
+                const btns = document.querySelectorAll(".opt-btn");
+                history.shuffledOpts.forEach((optText, idx) => {
+                    if (btns[idx]) {
+                        btns[idx].innerText = optText;
+                        btns[idx].className = "opt-btn"; // 重置基础类
+                        btns[idx].onclick = null; // 禁用点击
+                        
+                        if (optText === nowQ.correct) {
+                            btns[idx].classList.add("right");
+                        } else if (optText === history.selected) {
+                            btns[idx].classList.add("wrong");
+                        }
+                    }
+                });
+            } else {
+                // 新题目，正常渲染
+                document.getElementById("tip").innerText = "";
+                document.getElementById("tip").className = "tip";
+                
+                let shuffled = shuffle(nowQ.opts);
+                for (let i = 0; i < 4; i++) {
+                    let btn = document.getElementById("opt" + (i + 1));
+                    if (btn) {
+                        btn.innerText = shuffled[i];
+                        btn.className = "opt-btn";
+                        
+                        // 【新增】根据文字长度动态调整字体大小
+                        const textLen = shuffled[i].length;
+                        if (textLen > 20) {
+                            btn.style.fontSize = "14px"; // 很长时用小字
+                        } else if (textLen > 12) {
+                            btn.style.fontSize = "16px"; // 中等长度用中字
+                        } else {
+                            btn.style.fontSize = "18px"; // 短文字用默认字
+                        }
+
+                        // 传入 shuffled 以便记录历史
+                        btn.onclick = () => checkAnswer(shuffled[i], btn, shuffled);
+                    }
+                }
+            }
+            updateNavButtons();
+        }
+
+        // 判题
+        function checkAnswer(sel, btn, shuffledOpts) {
+            // 防止重复答题
+            if (answerHistory[currentIndex]) return;
+
+            let tip = document.getElementById("tip");
+            let all = document.querySelectorAll(".opt-btn");
+            
+            all.forEach(b => {
+                b.onclick = null; // 禁用所有选项
+                if (b.innerText === nowQ.correct) {
+                    b.classList.add("right");
+                } else if (b.innerText === sel) {
+                    b.classList.add("wrong");
+                }
+            });
+
+            const isRight = (sel === nowQ.correct);
+            if (isRight) {
+                right++;
+                tip.innerText = "回答正确！👍";
+                tip.className = "tip right";
+            } else {
+                wrong++;
+                //tip.innerText = "答错了！正确答案：" + nowQ.correct;
+                tip.innerText = "回答错误！❌";
+                tip.className = "tip wrong";
+            }
+
+            // 存入历史
+            answerHistory[currentIndex] = {
+                selected: sel,
+                isRight: isRight,
+                shuffledOpts: shuffledOpts
+            };
+        }
+
+        // 上一题
+        function prevQuestion() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderQ();
+            }
+        }
+
+        // 下一题
+        function nextQuestion() {
+            // 可选：强制要求必须作答才能下一题
+            // if (!answerHistory[currentIndex]) { alert("请先作答"); return; }
+
+            currentIndex++;
+            if (currentIndex >= currentList.length) {
+                showResult();
+                return;
+            }
+            renderQ();
+        }
+
+        // 显示结果
+        function showResult() {
+            document.getElementById("quiz-screen").classList.add("hidden");
+            document.getElementById("result-screen").classList.remove("hidden");
+            
+            // 计算正确率，防止除以0
+            const accuracy = quizCount > 0 ? Math.round(right / quizCount * 100) : 0;
+            
+            // 使用 innerHTML 和 <p> 标签来实现大间隔显示，并增加返回按钮
+            document.getElementById("result-text").innerHTML = `
+                <p style="margin: 15px 0; font-size: 26px;">总题数：<strong>${quizCount}</strong></p>
+                <p style="margin: 15px 0; font-size: 26px; color: #67c23a;">答对：<strong>${right}</strong></p>
+                <p style="margin: 15px 0; font-size: 26px; color: #f56c6c;">答错：<strong>${wrong}</strong></p>
+                <p style="margin: 25px 0; font-size: 28px; font-weight: bold;">正确率：${accuracy}%</p>
+                
+                <!-- 新增：回到主页按钮组 -->
+                <div class="result-btn-group">
+                    <button class="next-btn" onclick="window.location.href='index.html'">回到主页</button>
+                    <button class="next-btn" onclick="location.reload()">重新开始</button>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
