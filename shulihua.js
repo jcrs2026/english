@@ -1403,5 +1403,74 @@ const questionList = [
             "整块放入热水中搅拌",
             "研碎、搅拌并加热"
         ] 
+    },
+    { 
+        subject: "physics",
+        content: `
+            <img src="pic/物理_力学_02.jpg" alt="力学图">
+            <div style="margin-top: 10px; font-size: 24px;">如图，哪边木头的受到浮力大</div>
+        `, 
+        correct: "一样大", 
+        opts: ["左", "右", "一样大", "不确定"] 
+    },
+    {
+        subject: "physics",
+        content: `<div style="font-size:24px;">雪糕化了，属于哪种物态变化？</div>`,
+        correct: "熔化",
+        opts: ["熔化", "凝固", "汽化", "液化"]
+    },
+    {
+        subject: "physics",
+        content: `<div style="font-size:24px;">树枝上形成霜，属于哪种物态变化？</div>`,
+        correct: "凝华",
+        opts: ["凝固", "凝华", "升华", "汽化"]
+    },
+    {
+        subject: "physics",
+        content: `<div style="font-size:24px;">洒水的地面干了，属于哪种物态变化？</div>`,
+        correct: "汽化",
+        opts: ["液化", "升华", "汽化", "凝固"]
+    },
+    {
+        subject: "physics",
+        content: `<div style="font-size:24px;">樟脑丸越来越小，属于哪种物态变化？</div>`,
+        correct: "升华",
+        opts: ["熔化", "升华", "汽化", "凝华"]
+    },
+    {
+        subject: "physics",
+        content: `<div style="font-size:24px;">用铁水浇筑工件，属于哪种物态变化？</div>`,
+        correct: "凝固",
+        opts: ["凝固", "熔化", "凝华", "液化"]
+    },
+    {
+        subject: "physics",
+        content: `<div style="font-size:24px;">冬天窗户上的冰花，属于哪种物态变化？</div>`,
+        correct: "凝华",
+        opts: ["凝固", "凝华", "升华", "汽化"]
+    },
+    {
+        subject: "physics",
+        content: `<div style="font-size:24px;">蒸锅上的“白气”，属于哪种物态变化？</div>`,
+        correct: "液化",
+        opts: ["汽化", "液化", "熔化", "升华"]
+    },
+    {
+        subject: "physics",
+        content: `<div style="font-size:24px;">舞台上干冰制造的白雾，属于哪种物态变化？</div>`,
+        correct: "液化",
+        opts: ["汽化", "液化", "凝华", "升华"]
+    },
+    {
+        subject: "physics",
+        content: `<div style="font-size:24px;">晒在太阳下的湿衣服变干，属于哪种物态变化？</div>`,
+        correct: "汽化",
+        opts: ["液化", "汽化", "升华", "熔化"]
+    },
+    {
+        subject: "physics",
+        content: `<div style="font-size:24px;">火山喷发时岩浆冷却成岩石，属于哪种物态变化？</div>`,
+        correct: "凝固",
+        opts: ["凝固", "熔化", "凝华", "汽化"]
     }
 ];
